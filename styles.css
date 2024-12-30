@@ -1,0 +1,329 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: blanchedalmond; /* Light gray background */
+    color: #343a40; /* Dark text for contrast */
+}
+
+/* Header Styles */
+header {
+    background:#343a40; /* Dark background */
+    color: #495057;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Allows elements to wrap on small screens */
+}
+
+.logo-container img {
+    height: 100px;
+}
+
+.intro-container {
+    text-align: right;
+}
+
+.intro-container h1 {
+    font-size: 35px;
+    color: whitesmoke; /* Vibrant blue for heading */
+}
+
+.intro-container p {
+    font-size: 20px;
+    color: wheat;
+}
+
+.navbar .nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    background-color: #1e88e5; /* Blue background on hover */
+    color: white; /* White text on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Full-Width Section Styles */
+section {
+    width: 100%;
+    padding: 60px 20px;
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #ffffff; /* White background for sections */
+    border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
+/* Section Headers */
+h2 {
+    font-size: 36px;
+    color: #222831; /* Blue for section headers */
+    margin-bottom: 20px;
+    padding: 15px;
+    background: whitesmoke; /* Light blue gradient for headers */
+    border-radius: 8px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 30px;
+    color: #495057;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+h3:hover {
+    color: #1e88e5; /* Blue on hover */
+}
+
+section p {
+    font-size: 33px; /* Increased font size for paragraphs */
+    line-height: 1.8; /* Slightly more line spacing for readability */
+    color: #495057; /* Darker text color for paragraphs */
+}
+
+/* Section Styles for Different Subjects */
+.section-about {
+    background-color: #f1f8e9; /* Light greenish background */
+}
+
+.cs-section {
+    background: linear-gradient(145deg, #e3f2fd, #ffffff); /* Light blue gradient */
+}
+
+.dsp-section {
+    background: linear-gradient(145deg, #ffffff, #bbdefb); /* Subtle blue gradient */
+}
+
+.dbms-section {
+    background-color: #f9f9f9; /* Very light gray */
+}
+
+.os-section {
+    background: linear-gradient(145deg, #e3f2fd, #ffffff); /* Light blue gradient */
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(145deg, #ffffff, #e3f2fd); /* Light blue gradient footer */
+    color: #495057;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow at the top */
+}
+
+footer p {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Simulation and Banner Image Styling */
+.simulation {
+    margin-bottom: 40px; /* Space between simulations */
+}
+
+.simulation h4 {
+    font-size: 40px; /* Larger font for subheadings */
+    color: #1e88e5; /* Highlighted blue */
+    margin-bottom: 10px;
+}
+
+.simulation p {
+    font-size: 25px; /* Readable font size for descriptions */
+    line-height: 1.8; /* Spaced-out text for better readability */
+    margin-bottom: 15px;
+}
+
+.simulation pre.code-block {
+    background-color: #f4f4f4; /* Soft light gray background */
+    border: 1px solid #dcdcdc; /* Subtle border */
+    padding: 20px; /* Increased padding for a clean look */
+    border-radius: 8px; /* Rounded corners */
+    text-align: left;
+    overflow-x: auto; /* Prevent overflow for long lines */
+    font-size: 18px; /* Larger font size for better readability */
+    line-height: 1.6; /* Proper line spacing for code */
+    font-family: "Courier New", Courier, monospace; /* Professional monospace font */
+    max-width: 90%; /* Limit width for cleaner layout */
+    margin: 0 auto; /* Center align the code block */
+}
+
+.simulation img {
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 15px auto; /* Center align with spacing */
+    max-width: 70%; /* Reduce the image width */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 5px; /* Slightly rounded edges */
+}
+
+/* Banner Image Styling */
+.banner-container {
+    text-align: center; /* Center the banner image */
+    margin-bottom: 40px; /* Space below the image */
+}
+
+.banner-container img {
+    width: 80%; /* Reduce width to 80% */
+    max-width: 900px; /* Optional: Set a max width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Code Block Styling */
+.code-block {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Allow wrapping of long lines */
+    word-wrap: break-word;
+    margin: 20px 0; /* Space between code block and other content */
+}
+
+/* Styled Button */
+.styled-button {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.styled-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.styled-button:active {
+    background-color: #004085; /* Even darker blue on click */
+    transform: translateY(1px); /* Pressed effect */
+}
+
+.styled-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus ring */
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust header and navbar layout */
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .intro-container h1 {
+        font-size: 28px; /* Adjust font size for mobile */
+    }
+
+    .intro-container p {
+        font-size: 18px; /* Adjust font size for mobile */
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+    }
+
+    .logo-container img {
+        height: 80px; /* Smaller logo on mobile */
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .simulation h4 {
+        font-size: 30px;
+    }
+
+    .simulation p {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-container h1 {
+        font-size: 24px; /* Further adjust font size for small screens */
+    }
+
+    .intro-container p {
+        font-size: 16px; /* Adjust paragraph size for mobile */
+    }
+
+    .nav-menu li a {
+        font-size: 16px; /* Adjust navbar link size */
+    }
+
+    .banner-container img {
+        width: 100%; /* Full-width image on smaller screens */
+    }
+
+    .styled-button {
+        font-size: 14px; /* Adjust button size */
+        padding: 8px 15px;
+    }
+
+    section {
+        padding: 30px 10px;
+    }
+
+    .code-block {
+        font-size: 14px; /* Adjust font size in code block */
+    }
+}

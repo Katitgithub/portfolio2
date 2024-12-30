@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS - Student Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="./Screenshot 2024-12-27 111023.png" alt="College Logo" />
+        </div>
+        <div class="intro-container">
+          <p>
+            Discover My Academic Journey and Projects of Communication Systems
+          </p>
+        </div>
+        <nav class="navbar">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dsp.html">DSP</a></li>
+            <li><a href="ml.html">ml</a></li>
+            <li><a href="os.html">OS</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="cs">
+      <div class="banner-container">
+        <img src="./cs_image/banner.webp" alt="Communication Systems Banner" />
+      </div>
+      <h2>Communication Systems (CS)</h2>
+      <div class="cs-section">
+        <h3>Learning Skills</h3>
+        <p>
+          In this course, I have developed a strong foundation in analog and
+          digital communication aspects, such as different types of signal
+          generation, modulation, and demodulation techniques, and how signals
+          are transmitted.<br />
+          Matlab code simulations for visulaizing differnet signals.
+        </p>
+        <br />
+        <hr />
+        <h3>MATLAB Simulations</h3>
+
+        <!-- Simulation 1: AM Modulation -->
+        <div class="simulation">
+          <h4>1. AM Modulation</h4>
+          <p class="example">
+            <strong>Real-Life Example:<br /></strong>
+            Amplitude Modulation (AM) is commonly used in AM radio broadcasting,
+            where audio signals are transmitted over long distances by
+            modulating a carrier wave. It is also used in early aviation
+            communications.
+          </p>
+          <p>Simulation of Amplitude Modulation (AM) using MATLAB:</p>
+
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+        % MATLAB Code for AM Modulation
+        fs = 1000; % Sampling frequency
+        t = 0:1/fs:1-1/fs; % Time vector
+        carrier = cos(2*pi*100*t); % Carrier signal
+        message = cos(2*pi*5*t); % Message signal
+        am_signal = (1 + message) .* carrier; % AM modulation
+        plot(t, am_signal);
+        title('AM Modulated Signal');
+          </pre>
+
+          <img
+            src="./cs_image/Screenshot 2024-12-27 120318.png"
+            alt="AM Modulation"
+          />
+        </div>
+
+        <!-- Simulation 2: FM Modulation -->
+        <div class="simulation">
+          <h4>2. FM Modulation</h4>
+          <p class="example">
+            <strong>Description:<br /></strong> Frequency Modulation (FM) is a
+            method of modulating a carrier signal where the instantaneous
+            frequency of the carrier varies in proportion to the amplitude of
+            the modulating signal. FM is widely used in communication systems
+            due to its resilience to noise and improved signal quality.
+          </p>
+          <p>Simulation of Frequency Modulation (FM) using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+% MATLAB Code for FM Modulation
+fs = 1000; % Sampling frequency
+t = 0:1/fs:1-1/fs; % Time vector
+carrier = cos(2*pi*100*t); % Carrier signal
+message = cos(2*pi*5*t); % Message signal
+fm_signal = cos(2*pi*100*t + sin(2*pi*5*t)); % FM modulation
+plot(t, fm_signal);
+title('FM Modulated Signal');
+  </pre
+          >
+          <img
+            src="./cs_image/Screenshot 2024-12-27 120403.png"
+            alt="FM Modulation"
+          />
+        </div>
+
+        <!-- Add 8 more simulations in the same format -->
+        <!-- Example placeholders for other simulations -->
+
+        <!-- Simulation 3 -->
+        <div class="simulation">
+          <h4>3. PCM</h4>
+          <p class="example">
+            <strong>Description:<br /></strong> PCM is a digital modulation
+            technique where an analog signal is sampled at regular intervals,
+            quantized to the nearest level within a range, and encoded into
+            binary form. The process involves: <br />
+            ● Sampling: The continuous-time signal is sampled at a specific
+            frequency (e.g., 4kHz or 8kHz) according to the Nyquist criterion.
+            <br />
+            ● Quantization: The amplitude of the sampled signal is approximated
+            to the nearest quantization level. <br />
+            ● Encoding: The quantized levels are converted into binary codes for
+            digital transmission or storage.
+          </p>
+          <p>Simulation of PCM using MATLAB:</p>
+
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+        % MATLAB Code for PCM Modulation
+        % PCM Implementation in MATLAB
+        
+        % Parameters
+        fs = 8000; % Sampling frequency (Hz)
+        t = 0:1/fs:1-1/fs; % Time vector (1 second duration)
+        f = 5; % Frequency of the signal (Hz)
+        
+        % Generate a sine wave signal
+        x = sin(2 * pi * f * t);
+        
+        % Quantization parameters
+        numLevels = 16; % Number of quantization levels
+        x_min = -1; % Minimum amplitude of the signal
+        x_max = 1; % Maximum amplitude of the signal
+        
+        % Quantization step size
+        delta = (x_max - x_min) / numLevels;
+        
+        % Quantize the signal
+        quantized_signal = round((x - x_min) / delta) * delta + x_min;
+        
+        % Encode the quantized signal
+        encoded_signal = round((quantized_signal - x_min) / delta);
+        
+        % Decode the quantized signal (Reconstruct)
+        decoded_signal = encoded_signal * delta + x_min;
+        
+        % Plot results
+        figure;
+        subplot(3,1,1);
+        plot(t, x);
+        title('Original Signal');
+        xlabel('Time (s)');
+        ylabel('Amplitude');
+        
+        subplot(3,1,2);
+        stem(t, encoded_signal, 'filled');
+        title('PCM Encoded Signal');
+        xlabel('Time (s)');
+        ylabel('Quantization Levels');
+        
+        subplot(3,1,3);
+        plot(t, decoded_signal);
+        title('PCM Decoded Signal');
+        xlabel('Time (s)');
+        ylabel('Amplitude');
+          </pre>
+          <img
+            src="./cs_image/Screenshot 2024-12-27 121705.png"
+            alt="PCM Modulation"
+          />
+        </div>
+        <!-- Simulation 4 -->
+        <div class="simulation">
+          <h4>4. DPCM</h4>
+          <p class="example">
+            <strong>Description:<br /></strong>● DPCM is an enhanced version of
+            PCM that reduces redundancy by encoding the difference between
+            consecutive samples rather than the absolute sample values.<br />
+            ● Encoding: The predictor estimates the current sample using
+            previous samples, and the difference (error) is quantized and
+            encoded.<br />
+            ● Decoding: The difference is added back to the predictor value to
+            reconstruct the original signal.
+          </p>
+          <p>Simulation of DPCM using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+% MATLAB Code for DPCM Modulation
+fs = 8000; % Sampling frequency (Hz)
+t = 0:1/fs:1-1/fs; % Time vector (1 second duration)
+f = 5; % Frequency of the signal (Hz)
+
+% Generate a sine wave signal
+x = sin(2 * pi * f * t);
+
+% Quantization levels
+numLevels = 16; % Number of quantization levels
+delta = 2 / numLevels; % Step size for quantization
+
+% Initialize variables
+n = length(x);
+encoded = zeros(1, n);
+decoded = zeros(1, n);
+prediction = 0; % Initial prediction
+
+% DPCM encoding and decoding
+for i = 1:n
+    % Calculate difference
+    diff = x(i) - prediction;
+    
+    % Quantize the difference
+    quantized_diff = round(diff / delta) * delta;
+    
+    % Store encoded signal
+    encoded(i) = quantized_diff / delta; % Encoded as indices
+    
+    % Reconstruct the signal
+    decoded(i) = prediction + quantized_diff;
+    
+    % Update the prediction (use reconstructed value)
+    prediction = decoded(i);
+end
+
+% Plot the results
+figure;
+subplot(3,1,1);
+plot(t, x);
+title('Original Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+subplot(3,1,2);
+stem(t, encoded, 'filled');
+title('DPCM Encoded Signal');
+xlabel('Time (s)');
+ylabel('Encoded Value');
+
+subplot(3,1,3);
+plot(t, decoded);
+title('DPCM Decoded Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+          </pre>
+          <img src="./cs_image/DPCM.png" alt="PSK Modulation" />
+        </div>
+
+        <!-- Repeat for simulations 5 through 10 -->
+        <!-- Simulation 5 -->
+        <div class="simulation">
+          <h4>5.SamplingTheorem</h4>
+          <p class="example">
+            <strong>Real-Life Example:<br /></strong>
+            <br />
+            To maintain sound quality in music recordings. <br />Sampling
+            process applicable in the conversion of analog to discrete form.
+            <br />
+            Speech recognition systems and pattern recognition systems.
+            <br />Modulation and demodulation systems In sensor data evaluation
+            systems Radar and radio navigation system sampling is applicable.
+            <br />
+            Digital watermarking and biometric identification systems,
+            surveillance systems.
+          </p>
+          <p>Simulation of Sampling Theorem using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+  % MATLAB Code for SamplingTheorem
+  t=-10:.01:10;
+T=4;
+fm=1/T;
+x=cos(2*pi*fm*t);
+subplot(2,2,1);
+plot(t,x);
+xlabel('time');ylabel('x(t)')
+title('continous time signal')
+grid;
+n1=-4:1:4
+fs1=1.6*fm;
+fs2=2*fm;
+fs3=8*fm;
+x1=cos(2*pi*fm/fs1*n1);
+subplot(2,2,2);
+stem(n1,x1);
+xlabel('time');ylabel('x(n)')
+title('discrete time signal with fs<2fm')
+hold on
+subplot(2,2,2);
+plot(n1,x1)
+grid;
+n2=-5:1:5;
+x2=cos(2*pi*fm/fs2*n2);
+subplot(2,2,3);
+stem(n2,x2);
+xlabel('time');ylabel('x(n)')
+title('discrete time signal with fs=2fm')
+hold on
+subplot(2,2,3);
+plot(n2,x2)
+grid;
+n3=-20:1:20;
+x3=cos(2*pi*fm/fs3*n3);
+subplot(2,2,4);
+stem(n3,x3);
+xlabel('time');ylabel('x(n)')
+title('discrete time signal with fs>2fm')
+hold on
+subplot(2,2,4);
+plot(n3,x3)
+grid;
+
+  
+  
+            </pre
+          >
+          <img src="./cs_image/sampling.png" alt="PSK Modulation" />
+        </div>
+        <!-- Simulation 6 -->
+        <div class="simulation">
+          <h4>6.DSBSC</h4>
+          <p class="example">
+            <strong>Real-Life Example:<br /></strong> Double Sideband Suppressed
+            Carrier (DSB-SC) is a type of amplitude modulation (AM) where the
+            carrier component is suppressed, leaving only the sidebands in the
+            transmitted signal. This improves power efficiency, as no energy is
+            spent on transmitting the carrier.
+          </p>
+          <p>Simulation of DSBSC using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+    % MATLAB Code DSBSC
+    Fs = 10000;  
+t = 0:1/Fs:0.1;            
+fc = 1000;                 
+Am = 1;                    
+Ac = 1;                    
+fm = 100;                 
+
+message_signal = Am * cos(2 * pi * fm * t);
+carrier_signal = Ac * cos(2 * pi * fc * t);
+modulated_signal = message_signal .* carrier_signal;
+
+figure;
+
+
+subplot(3, 1, 1);
+plot(t, message_signal);
+title('Message Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+
+subplot(3, 1, 2);
+plot(t, carrier_signal);
+title('Carrier Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+
+subplot(3, 1, 3);
+plot(t, modulated_signal);
+title('DSB-SC Modulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+    
+    
+              </pre
+          >
+          <img src="./cs_image/DSBSC.png" alt="PSK Modulation" />
+        </div>
+
+        <!-- Simulation 7 -->
+        <div class="simulation">
+          <h4>7.ASK</h4>
+          <p class="example">
+            <strong>Real-Life Example:<br /></strong> ● ASK is a digital
+            modulation technique where the amplitude of the carrier signal is
+            varied in accordance with the binary data (0s and 1s) of the
+            modulating signal. <br />
+            ● Binary '1': The carrier signal is transmitted at its original
+            amplitude. <br />
+            ● Binary '0': The carrier signal is turned off or transmitted with
+            zero/minimal amplitude. <br />
+            ● Mathematically, the ASK signal is represented as: s(t)=
+            <br />Ac*cos*(2πfct), for binary “1”. <br />
+            s(t)=0 , for binary “0”.
+          </p>
+          <p>Simulation of ASK using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+    % MATLAB Code for ASK
+    % Amplitude Shift Keying (ASK) Modulation and Demodulation
+clc;
+clear;
+close all;
+
+% Parameters
+fs = 1000; % Sampling frequency in Hz
+fc = 100;  % Carrier frequency in Hz
+bit_rate = 10; % Bit rate in bits per second
+bits = [1 0 1 1 0 0 1]; % Data bits to transmit
+
+% Derived parameters
+T = 1/bit_rate; % Bit duration in seconds
+N = fs * T; % Number of samples per bit
+t = 0:1/fs:T-1/fs; % Time vector for one bit
+carrier = cos(2 * pi * fc * t); % Carrier signal
+
+% ASK Modulation
+modulated_signal = [];
+for bit = bits
+    if bit == 1
+        modulated_signal = [modulated_signal carrier]; % Transmit carrier for bit 1
+    else
+        modulated_signal = [modulated_signal zeros(1, length(t))]; % Transmit zero for bit 0
+    end
+end
+
+% Time vector for modulated signal
+total_time = length(bits) * T;
+t_modulated = 0:1/fs:total_time-1/fs;
+
+% Plot modulated signal
+figure;
+subplot(2,1,1);
+stem(bits, 'filled');
+title('Input Data Bits');
+ylabel('Amplitude');
+axis([0 length(bits)+1 -0.5 1.5]);
+grid on;
+
+subplot(2,1,2);
+plot(t_modulated, modulated_signal);
+title('ASK Modulated Signal');
+ylabel('Amplitude');
+xlabel('Time (s)');
+grid on;
+
+    
+              </pre
+          >
+          <img src="./cs_image/ASK.png" alt="PSK Modulation" />
+        </div>
+        <!-- Simulation 8 -->
+        <div class="simulation">
+          <h4>8.FSK</h4>
+
+          <p>
+            <strong>Real-Life Example:<br /></strong>●Frequency Shift Keying
+            (FSK) is a digital modulation technique where the frequency of the
+            carrier signal is varied based on the binary message signal.
+            <br />
+            ● Binary Representation: <br />
+            o Binary '1' is transmitted using a high-frequency carrier (f1).
+            <br />
+            o Binary '0' is transmitted using a low-frequency carrier (f2).
+            <br />● Modulation Process: The binary message signal modulates the
+            carrier frequency. For m(t)=1, the carrier signal is
+            s(t)=A*cos*(2πf1t) and for m(t)=0, it is s(t)=A*cos*(2πf2t). <br />●
+            Demodulation Process: The received FSK signal is demodulated by
+            separating the two frequencies using band-pass filters tuned to f1
+            and f2. The signal power is measured in each band, and a decision
+            threshold determines the binary output.
+          </p>
+          <p>Simulation of FSK using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+    % MATLAB Code for FSK
+    
+    % Parameters
+fs = 1e5;          % Sampling frequency (Hz)
+Tb = 1e-3;         % Bit duration (s)
+Rb = 1 / Tb;       % Bit rate (bps)
+f0 = 1e3;          % Frequency for bit '0' (Hz)
+f1 = 2e3;          % Frequency for bit '1' (Hz)
+numBits = 10;      % Number of bits in the message
+
+% Generate random binary data
+data = randi([0 1], 1, numBits);
+
+% Time vector for one bit
+t = 0:1/fs:Tb-1/fs;
+
+% Modulation process
+FSK_signal = [];
+for i = 1:numBits
+    if data(i) == 0
+        carrier = cos(2 * pi * f0 * t); % Frequency for bit '0'
+    else
+        carrier = cos(2 * pi * f1 * t); % Frequency for bit '1'
+    end
+    FSK_signal = [FSK_signal carrier];
+end
+
+% Time vector for entire signal
+time = 0:1/fs:numBits*Tb-1/fs;
+
+% Plotting the results
+figure;
+
+subplot(2,1,1);
+stairs(0:numBits-1, data, 'LineWidth', 2);
+grid on;
+xlabel('Bit Index');
+ylabel('Data');
+title('Input Binary Data');
+ylim([-0.5 1.5]);
+
+subplot(2,1,2);
+plot(time, FSK_signal, 'LineWidth', 1.5);
+grid on;
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('FSK Modulated Signal');
+
+              </pre
+          >
+          <img src="./cs_image/FSK.png" alt="PSK Modulation" />
+        </div>
+
+        <!-- Simulation 9 -->
+        <div class="simulation">
+          <h4>9.PSK</h4>
+          <p class="example">
+            <strong>Real-Life Example:<br /></strong> ●Phase Shift Keying (PSK)
+            is a digital modulation technique where the phase of the carrier
+            signal is varied based on the binary message signal. <br />● Binary
+            Representation:<br />
+            o Binary '1' is transmitted with a carrier signal having a phase of
+            0∘0^\circ0∘. <br />o Binary '0' is transmitted with a carrier signal
+            having a phase of 180∘180^\circ180∘.<br />
+            ● Modulation Process: The binary message signal modulates the phase
+            of the carrier signal. For m(t)=1, the modulated signal is
+            s(t)=Ac*cos*(2πfct) and m(t)=0, it is s(t)=−Ac*cos*(2πfct).<br />
+            ● Demodulation Process: The received PSK signal is demodulated by
+            correlating it with a reference carrier signal. The resulting signal
+            is integrated over the bit duration. A decision threshold is
+            applied:<br />
+            o Positive values correspond to binary '1'. <br />o Negative values
+            correspond to binary '0'.
+          </p>
+          <p>Simulation of PSK using MATLAB:</p>
+          <button class="styled-button" onclick="toggleCode(this)">
+            Show Code
+          </button>
+          <pre class="code-block" style="display: none">
+    % MATLAB Code for PSK
+    
+    % Parameters
+fs = 1e5;          % Sampling frequency (Hz)
+Tb = 1e-3;         % Bit duration (s)
+Rb = 1 / Tb;       % Bit rate (bps)
+fc = 1e3;          % Carrier frequency (Hz)
+numBits = 10;      % Number of bits in the message
+
+% Generate random binary data
+data = randi([0 1], 1, numBits);
+
+% Time vector for one bit
+t = 0:1/fs:Tb-1/fs;
+
+% BPSK Modulation Process
+BPSK_signal = [];
+for i = 1:numBits
+    if data(i) == 0
+        carrier = cos(2 * pi * fc * t + pi); % Phase shifted by 180° for bit '0'
+    else
+        carrier = cos(2 * pi * fc * t);      % No phase shift for bit '1'
+    end
+    BPSK_signal = [BPSK_signal carrier];
+end
+
+% Time vector for the entire signal
+time = 0:1/fs:numBits*Tb-1/fs;
+
+% Plotting the Results
+figure;
+
+subplot(2,1,1);
+stairs(0:numBits-1, data, 'LineWidth', 1.5);
+grid on;
+xlabel('Bit Index');
+ylabel('Data');
+title('Input Binary Data');
+ylim([-0.5 1.5]);
+
+subplot(2,1,2);
+plot(time, BPSK_signal, 'LineWidth', 1.5);
+grid on;
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('BPSK Modulated Signal');
+
+              </pre
+          >
+          <img src="./cs_image/PSK.png" alt="PSK Modulation" />
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Student Name. All Rights Reserved.</p>
+    </footer>
+  </body>
+  <script src="script.js"></script>
+</html>
